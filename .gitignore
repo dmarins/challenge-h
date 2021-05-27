@@ -1,0 +1,54 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+# testing
+/coverage
+
+# production
+/build
+
+### dotenv ###
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+### yarn ###
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+!.yarn/cache
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+### VisualStudioCode Patch ###
+.history
+.ionide
+
+cypress/*
+!cypress/integration
+!cypress/support
+!cypress/fixtures

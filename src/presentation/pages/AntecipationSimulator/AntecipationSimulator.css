@@ -1,0 +1,54 @@
+.container {
+  height: 389px;
+  width: 608px;
+  background: #ffffff;
+  border: 1px solid #d1dce3;
+  border-radius: 4px;
+  display: flex;
+}
+
+.container .inputs {
+  width: 60%;
+  padding: 35px 55px;
+}
+
+.container .inputs .title {
+  font-weight: bold;
+  font-size: 24px;
+  color: #656565;
+}
+
+.container .inputs .form {
+  margin-top: 20px;
+}
+
+.container .inputs .form .field {
+  margin-bottom: 20px;
+}
+
+.container .inputs .form .field label {
+  font-size: 14px;
+  color: #656565;
+}
+
+.container .inputs .form .field input[type='text'] {
+  height: 37px;
+  background: #ffffff;
+  border: 1px solid #dde6e9;
+  border-radius: 4px;
+  width: 90%;
+  margin-top: 5px;
+  margin-bottom: 3px;
+}
+
+.container .inputs .form .field small {
+  font-weight: bold;
+  font-size: 11px;
+  color: #cecece;
+}
+
+.container .resume {
+  width: 40%;
+  background: rgba(209, 220, 227, 0.18);
+  border-radius: 4px;
+}
