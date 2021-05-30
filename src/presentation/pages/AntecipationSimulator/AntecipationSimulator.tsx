@@ -27,7 +27,30 @@ const AntecipationSimulator = ({ defaultAntecipation }: Props): JSX.Element => {
           </div>
         </div>
       </div>
-      <div className="resume">resume</div>
+      <div className="resume">
+        <h3 className="title">Você Receberá:</h3>
+        <hr />
+        <div className="range">
+          <ul>
+            <li>
+              <label>Amanhã:</label>
+              <span>0,00</span>
+            </li>
+            <li>
+              <label>Em 15 dias:</label>
+              <span>0,00</span>
+            </li>
+            <li>
+              <label>Em 30 dias:</label>
+              <span>0,00</span>
+            </li>
+            <li>
+              <label>Em 90 dias:</label>
+              <span>0,00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
   );
 };
