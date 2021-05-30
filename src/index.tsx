@@ -10,9 +10,14 @@ import 'normalize.css';
 ReactDOM.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18n}>
+      <header>
+        <button>pt-br</button>
+        <button>en-us</button>
+      </header>
       <main>
         <Router />
       </main>
+      <footer>{process.env.REACT_APP_VERSION}</footer>
     </I18nextProvider>
   </React.StrictMode>,
   document.getElementById('root'),
