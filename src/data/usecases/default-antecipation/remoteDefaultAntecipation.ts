@@ -1,15 +1,15 @@
 import IDefaultAntecipation from 'domain/usecases/default-antecipation/defaultAntecipation';
 import { DefaultRangeModel } from 'domain/models/default-antecipation/defaultRangeModel';
 
-import HttpPostClient from 'data/protocols/http/httpPostClient';
+import IHttpPostClient from 'data/protocols/http/httpPostClient';
 import { HttpRequest } from 'data/protocols/http/httpRequest';
 import { HttpStatusCode } from 'data/protocols/http/httpStatusCode';
 
 class RemoteDefaultAntecipation implements IDefaultAntecipation {
   readonly url: string;
-  readonly httpClient: HttpPostClient<DefaultRangeModel>;
+  readonly httpClient: IHttpPostClient<DefaultRangeModel>;
 
-  constructor(url: string, httpClient: HttpPostClient<DefaultRangeModel>) {
+  constructor(url: string, httpClient: IHttpPostClient<DefaultRangeModel>) {
     this.url = url;
     this.httpClient = httpClient;
   }
