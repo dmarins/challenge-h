@@ -1,5 +1,18 @@
 {
-  "topbar": {
-    "title": "Institutional"
+  "inputs": {
+    "title": "Simulate Your Anticipation",
+    "labels":{
+      "sale": "Enter the sale amount *",
+      "installments": "In how many installments? *",
+      "disclaimer": "Maximum of 12 installments",
+      "mdr": "Enter the MDR percentage *"
+    }
+  },
+  "resume":{
+    "title": "YOU WILL RECEIVE:",
+    "items":{
+      "tomorrow": "Tomorrow",
+      "inXdays": "In {{days}} days"
+    }
   }
 }
