@@ -1,11 +1,11 @@
-import { DefaultRangeModel } from '../../models/default-antecipation/defaultRangeModel';
+import { CommandResultDto } from 'domain/models/commons/commandResultDto';
 
 interface IDefaultAntecipation {
   post: (
     amount: number,
     installments: number,
     mdr: number,
-  ) => Promise<DefaultRangeModel>;
+  ) => Promise<CommandResultDto>;
 }
 
 export default IDefaultAntecipation;
