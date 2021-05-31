@@ -1,18 +1,21 @@
 {
   "inputs": {
     "title": "Simule sua Antecipação",
-    "labels":{
+    "labels": {
       "sale": "Informe o valor da venda *",
       "installments": "Em quantas parcelas? *",
       "disclaimer": "Máximo de 12 parcelas",
       "mdr": "Informe o percentual de MDR *"
     }
   },
-  "resume":{
+  "resume": {
     "title": "VOCÊ RECEBERÁ:",
-    "items":{
+    "items": {
       "tomorrow": "Amanhã",
       "inXdays": "Em {{days}} dias"
     }
+  },
+  "loading": {
+    "title": "Informe os valores ao lado para calcular a sua antecipação."
   }
 }

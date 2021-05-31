@@ -14,5 +14,8 @@
       "tomorrow": "Tomorrow",
       "inXdays": "In {{days}} days"
     }
+  },
+  "loading": {
+    "title": "Enter the values on the side to calculate your anticipation."
   }
 }

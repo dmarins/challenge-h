@@ -58,6 +58,7 @@ const AntecipationSimulator = ({ defaultAntecipation }: Props): JSX.Element => {
     const result = await defaultAntecipation.post(amount, installments, mdr);
 
     globalContext.setValue({ loading: false, resume: result });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [amount, installments, mdr]);
 
   useEffect(() => {
