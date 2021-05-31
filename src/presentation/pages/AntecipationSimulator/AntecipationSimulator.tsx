@@ -27,7 +27,14 @@ const AntecipationSimulator = ({ defaultAntecipation }: Props): JSX.Element => {
   };
 
   const handleAmountChange = (e) => {
-    const value = trimValue(e.target.value);
+    const withoutSpaces = trimValue(e.target.value);
+    const value = convertToInt(withoutSpaces);
+
+    if (value < 1000) {
+      setAmount(null);
+      return;
+    }
+
     setAmount(convertToInt(value));
   };
 
