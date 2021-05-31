@@ -3,8 +3,6 @@ import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18n from 'i18next';
 
-import { Loading } from '../Loading/Loading';
-
 import './Resume.css';
 
 const Resume = (): JSX.Element => {
@@ -44,7 +42,6 @@ const Resume = (): JSX.Element => {
 
   if (globalContext.value === null) return <></>;
   if (globalContext.value.resume === undefined) return <></>;
-  debugger;
   if (globalContext.value.resume === null) return <></>;
 
   return (

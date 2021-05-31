@@ -8,7 +8,6 @@ const Loading = (): JSX.Element => {
   if (globalContext.value === null)
     return <h3>Informe ao lado os valores para calcular a sua antecipação.</h3>;
 
-  debugger;
   if (!globalContext.value.loading) return <></>;
 
   return (

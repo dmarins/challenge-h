@@ -19,22 +19,11 @@ const AntecipationSimulator = ({ defaultAntecipation }: Props): JSX.Element => {
   const globalContext = useContext(GlobalContext);
 
   const trimValue = (value) => {
-    if (value !== '') {
-      value = value.trim();
-      globalContext.setValue({ loading: true });
-    } else {
-      globalContext.setValue(null);
-    }
-
-    return value;
+    return value ? value.trim() : value;
   };
 
   const convertToInt = (value) => {
-    if (value !== '') {
-      return parseInt(value);
-    } else {
-      return null;
-    }
+    return value !== '' ? parseInt(value) : null;
   };
 
   const handleAmountChange = (e) => {
@@ -56,7 +45,7 @@ const AntecipationSimulator = ({ defaultAntecipation }: Props): JSX.Element => {
     if (amount === null) return;
     if (installments === null) return;
     if (mdr === null) return;
-    debugger;
+
     globalContext.setValue({ loading: true });
 
     const result = await defaultAntecipation.post(amount, installments, mdr);
