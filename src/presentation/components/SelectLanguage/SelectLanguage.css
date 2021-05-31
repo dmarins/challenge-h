@@ -1,0 +1,17 @@
+.button {
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.pt {
+  background: url('../../commons/assets/icons/brazil.svg') no-repeat center;
+}
+
+.en {
+  background: url('../../commons/assets/icons/usa.svg') no-repeat center;
+}
