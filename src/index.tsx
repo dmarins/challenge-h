@@ -6,17 +6,20 @@ import Router from 'main/router';
 import 'presentation/commons/styles/global.css';
 import { i18n } from 'presentation/commons/locale';
 import { SelectLanguage } from 'presentation/components/SelectLanguage/SelectLanguage';
+import { StoreProvider } from 'presentation/contexts/storeProvider';
 
 ReactDOM.render(
   <React.StrictMode>
     <I18nextProvider i18n={i18n}>
-      <header>
-        <SelectLanguage />
-      </header>
-      <main>
-        <Router />
-      </main>
-      <footer>{process.env.REACT_APP_VERSION}</footer>
+      <StoreProvider>
+        <header>
+          <SelectLanguage />
+        </header>
+        <main>
+          <Router />
+        </main>
+        <footer>{process.env.REACT_APP_VERSION}</footer>
+      </StoreProvider>
     </I18nextProvider>
   </React.StrictMode>,
   document.getElementById('root'),

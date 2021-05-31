@@ -53,35 +53,3 @@
   border-radius: 4px;
   padding: 70px 35px;
 }
-
-.container .resume .title {
-  font-style: italic;
-  font-weight: bold;
-  font-size: 1rem;
-  text-transform: uppercase;
-  color: #3d75bb;
-  margin-bottom: 5px;
-}
-
-.container .resume hr {
-  opacity: 0.3;
-  border: 1px solid #5d9cec;
-}
-
-.container .resume .range ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  font-style: italic;
-  font-size: 1rem;
-  color: #5d9cec;
-}
-
-.container .resume .range ul li {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-.container .resume .range ul li span {
-  margin-left: 5px;
-  font-weight: bold;
-}

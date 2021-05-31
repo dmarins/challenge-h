@@ -1,8 +1,10 @@
 import IDefaultAntecipation from 'domain/usecases/default-antecipation/defaultAntecipation';
 
-import { useCallback, useEffect, useState } from 'react';
+import { Loading } from 'presentation/components/Loading/Loading';
+import { Resume } from 'presentation/components/Resume/Resume';
+import GlobalContext from 'presentation/contexts/globalContext';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import './AntecipationSimulator.css';
 
 type Props = {
@@ -13,62 +15,58 @@ const AntecipationSimulator = ({ defaultAntecipation }: Props): JSX.Element => {
   const [amount, setAmount] = useState(null);
   const [installments, setInstallments] = useState(null);
   const [mdr, setMdr] = useState(null);
-  const [resume, setResume] = useState(null);
   const { t } = useTranslation();
+  const globalContext = useContext(GlobalContext);
 
   const trimValue = (value) => {
-    return (value = value ? value.trim() : null);
+    if (value !== '') {
+      value = value.trim();
+      globalContext.setValue({ loading: true });
+    } else {
+      globalContext.setValue(null);
+    }
+
+    return value;
   };
 
   const convertToInt = (value) => {
-    return parseInt(value);
+    if (value !== '') {
+      return parseInt(value);
+    } else {
+      return null;
+    }
   };
 
   const handleAmountChange = (e) => {
     const value = trimValue(e.target.value);
     setAmount(convertToInt(value));
   };
+
   const handleInstallmentsChange = (e) => {
     const value = trimValue(e.target.value);
     setInstallments(convertToInt(value));
   };
+
   const handleMdrChange = (e) => {
     const value = trimValue(e.target.value);
     setMdr(convertToInt(value));
   };
 
-  const initPost = useCallback(async () => {
-    const result = await defaultAntecipation.post(amount, installments, mdr);
-    setResume(result);
-  }, [amount, defaultAntecipation, installments, mdr]);
-
-  useEffect(() => {
+  const calculate = useCallback(async () => {
     if (amount === null) return;
     if (installments === null) return;
     if (mdr === null) return;
+    debugger;
+    globalContext.setValue({ loading: true });
 
-    initPost();
-  }, [amount, initPost, installments, mdr]);
+    const result = await defaultAntecipation.post(amount, installments, mdr);
 
-  const makeValueList = () => {
-    const properties = Object.entries(resume);
-    const items = [];
-    for (let [key, value] of properties) {
-      items.push(
-        <li key={key}>
-          <label>
-            {key === '1'
-              ? t('resume.items.tomorrow')
-              : t('resume.items.inXdays', { days: key })}
-            :
-          </label>
-          <span>{value}</span>
-        </li>,
-      );
-    }
+    globalContext.setValue({ loading: false, resume: result });
+  }, [amount, installments, mdr]);
 
-    return items;
-  };
+  useEffect(() => {
+    calculate();
+  }, [amount, calculate, installments, mdr]);
 
   return (
     <section className="container">
@@ -95,11 +93,8 @@ const AntecipationSimulator = ({ defaultAntecipation }: Props): JSX.Element => {
         </div>
       </div>
       <div className="resume">
-        <h3 className="title">{t('resume.title')}</h3>
-        <hr />
-        <div className="range">
-          <ul>{resume && makeValueList()}</ul>
-        </div>
+        <Loading />
+        <Resume />
       </div>
     </section>
   );
