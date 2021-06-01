@@ -2,10 +2,10 @@
   "inputs": {
     "title": "Simulate Your Anticipation",
     "labels":{
-      "sale": "Enter the sale amount *",
-      "installments": "In how many installments? *",
+      "sale": "Enter the sale amount",
+      "installments": "In how many installments?",
       "disclaimer": "Maximum of 12 installments",
-      "mdr": "Enter the MDR percentage *"
+      "mdr": "Enter the MDR percentage"
     }
   },
   "resume":{

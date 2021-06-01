@@ -26,6 +26,10 @@
   margin-bottom: 20px;
 }
 
+.container .inputs .form .field.error input {
+  border: 1px solid tomato !important;
+}
+
 .container .inputs .form .field label {
   font-size: 14px;
   color: #656565;
