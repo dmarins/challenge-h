@@ -38,11 +38,6 @@ const DefaultAntecipation = ({
     const withoutSpaces = trimValue(e.target.value);
     const value = convertToInt(withoutSpaces);
 
-    // if (value < 1000) {
-    //   setAmount(null);
-    //   return;
-    // }
-
     setAmount(convertToInt(value));
   };
 
@@ -74,11 +69,6 @@ const DefaultAntecipation = ({
   useEffect(() => validate('amount'), [amount]);
   useEffect(() => validate('installments'), [installments]);
   useEffect(() => validate('mdr'), [mdr]);
-
-  // useEffect(
-  //   () => validationError.forEach(() => Notification.showError()),
-  //   [validationError],
-  // );
 
   const calculateAntecipation = useCallback(async () => {
     const dto = await defaultAntecipation.post(amount, installments, mdr);

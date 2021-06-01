@@ -26,10 +26,6 @@
   margin-bottom: 20px;
 }
 
-.container .inputs .form .field.error input {
-  border: 1px solid tomato !important;
-}
-
 .container .inputs .form .field label {
   font-size: 14px;
   color: #656565;
@@ -43,6 +39,14 @@
   width: 90%;
   margin-top: 5px;
   margin-bottom: 3px;
+}
+
+.container .inputs .form .field input[type='text']:focus-within {
+  border: 1px solid #5d9cec !important;
+}
+
+.container .inputs .form .field.error input {
+  border: 1px solid tomato !important;
 }
 
 .container .inputs .form .field small {
