@@ -6,14 +6,14 @@ import { Loading } from 'presentation/components/Loading/Loading';
 import { Resume } from 'presentation/components/Resume/Resume';
 import GlobalContext from 'presentation/contexts/globalContext';
 import { useTranslation } from 'react-i18next';
-import './AntecipationSimulator.css';
+import './DefaultAntecipation.css';
 import Notification from 'presentation/components/Notification/Notification';
 
 type Props = {
   defaultAntecipation: IDefaultAntecipation;
 };
 
-const AntecipationSimulator = ({ defaultAntecipation }: Props): JSX.Element => {
+const DefaultAntecipation = ({ defaultAntecipation }: Props): JSX.Element => {
   const [amount, setAmount] = useState(null);
   const [installments, setInstallments] = useState(null);
   const [mdr, setMdr] = useState(null);
@@ -108,4 +108,4 @@ const AntecipationSimulator = ({ defaultAntecipation }: Props): JSX.Element => {
   );
 };
 
-export { AntecipationSimulator };
+export default DefaultAntecipation;

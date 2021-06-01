@@ -1,11 +1,11 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import makeAntecipationSimulator from 'main/factories/pages/antecipation-simulator/antecipationSimulatorFactory';
+import makeDefaultAntecipation from 'main/factories/pages/default-antecipation/defaultAntecipationFactory';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={makeAntecipationSimulator} />
+        <Route path="/" exact component={makeDefaultAntecipation} />
       </Switch>
     </BrowserRouter>
   );
