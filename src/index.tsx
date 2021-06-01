@@ -7,6 +7,8 @@ import 'presentation/commons/styles/global.css';
 import { i18n } from 'presentation/commons/locale';
 import { SelectLanguage } from 'presentation/components/SelectLanguage/SelectLanguage';
 import { StoreProvider } from 'presentation/contexts/storeProvider';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +19,7 @@ ReactDOM.render(
         </header>
         <main>
           <Router />
+          <ToastContainer />
         </main>
         <footer>{process.env.REACT_APP_VERSION}</footer>
       </StoreProvider>

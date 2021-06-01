@@ -1,11 +1,13 @@
 import IDefaultAntecipation from 'domain/usecases/default-antecipation/defaultAntecipation';
+import { ReturnType } from 'domain/dto/commandResultDto';
 
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { Loading } from 'presentation/components/Loading/Loading';
 import { Resume } from 'presentation/components/Resume/Resume';
 import GlobalContext from 'presentation/contexts/globalContext';
-import { useCallback, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './AntecipationSimulator.css';
+import Notification from 'presentation/components/Notification/Notification';
 
 type Props = {
   defaultAntecipation: IDefaultAntecipation;
@@ -48,22 +50,31 @@ const AntecipationSimulator = ({ defaultAntecipation }: Props): JSX.Element => {
     setMdr(convertToInt(value));
   };
 
-  const calculate = useCallback(async () => {
+  const calculateAntecipation = useCallback(async () => {
+    const dto = await defaultAntecipation.post(amount, installments, mdr);
+
+    if (dto.returnType !== ReturnType.ok) {
+      Notification.showError(dto.message);
+      globalContext.setValue(null);
+      return;
+    }
+
+    globalContext.setValue({ loading: false, resume: dto.data });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [amount, installments, mdr]);
+
+  useEffect(() => {
     if (amount === null) return;
     if (installments === null) return;
     if (mdr === null) return;
 
     globalContext.setValue({ loading: true });
 
-    const result = await defaultAntecipation.post(amount, installments, mdr);
+    calculateAntecipation();
 
-    globalContext.setValue({ loading: false, resume: result });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amount, installments, mdr]);
-
-  useEffect(() => {
-    calculate();
-  }, [amount, calculate, installments, mdr]);
+  }, [amount, calculateAntecipation, installments, mdr]);
 
   return (
     <section className="container">

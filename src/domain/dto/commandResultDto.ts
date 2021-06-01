@@ -19,23 +19,33 @@ export class CommandResultDto {
 
   timeOut() {
     this.returnType = ReturnType.timeOut;
-    this.message = 'A requisição excedeu o tempo de espera. Tente mais tarde.';
+    this.message =
+      'A requisição excedeu o tempo de espera. Tente novamente mais tarde.';
+
+    return this;
   }
 
   serverError() {
     this.returnType = ReturnType.serverError;
-    this.message = 'Houve um erro ao processar a requisição. Tente mais tarde.';
+    this.message =
+      'Houve um erro ao processar a requisição. Tente novamente mais tarde.';
+
+    return this;
   }
 
   badRequest() {
     this.returnType = ReturnType.badRequest;
     this.message =
       'Os parâmetros fornecidos são insuficientes para o sucesso da operação.';
+
+    return this;
   }
 
   ok(data: object = null) {
     this.returnType = ReturnType.ok;
     this.data = data;
     this.message = 'Operação realizada com sucesso.';
+
+    return this;
   }
 }

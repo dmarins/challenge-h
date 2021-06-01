@@ -1,4 +1,4 @@
-import { CommandResultDto } from 'domain/models/commons/commandResultDto';
+import { CommandResultDto } from 'domain/dto/commandResultDto';
 
 interface IDefaultAntecipation {
   post: (
