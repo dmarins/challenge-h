@@ -1,4 +1,5 @@
-import IFieldValidation from 'validation/protocols/field-validation';
+import IFieldValidation from 'validation/protocols/fieldValidation';
+import GreaterThanFieldValidation from 'validation/validators/greater-than/greaterThanFieldValidation';
 import RequiredFieldValidation from 'validation/validators/required-field/requiredFieldValidation';
 
 export class ValidationBuilder {
@@ -12,6 +13,13 @@ export class ValidationBuilder {
 
   static field(fieldName: string): ValidationBuilder {
     return new ValidationBuilder(fieldName, []);
+  }
+
+  greaterThan(limit: number): ValidationBuilder {
+    this.validations.push(
+      new GreaterThanFieldValidation(this.fieldName, limit),
+    );
+    return this;
   }
 
   required(): ValidationBuilder {

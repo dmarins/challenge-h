@@ -1,5 +1,5 @@
-import IFieldValidation from 'validation/protocols/field-validation';
-import RequiredFieldError from 'validation/errors/required-field-error';
+import IFieldValidation from 'validation/protocols/fieldValidation';
+import RequiredFieldError from 'validation/errors/requiredFieldError';
 
 class RequiredFieldValidation implements IFieldValidation {
   readonly field: string;
@@ -9,7 +9,7 @@ class RequiredFieldValidation implements IFieldValidation {
   }
 
   validate(input: object): Error {
-    return input[this.field] ? null : new RequiredFieldError();
+    return input[this.field]?.length > 0 ? null : new RequiredFieldError();
   }
 }
 

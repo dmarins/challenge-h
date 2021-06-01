@@ -26,49 +26,39 @@ const DefaultAntecipation = ({
   const { t } = useTranslation();
   const globalContext = useContext(GlobalContext);
 
-  const trimValue = (value) => {
-    return value ? value.trim() : value;
-  };
-
-  const convertToInt = (value) => {
-    return value !== '' ? parseInt(value) : null;
-  };
-
   const handleAmountChange = (e) => {
-    const withoutSpaces = trimValue(e.target.value);
-    const value = convertToInt(withoutSpaces);
-
-    setAmount(convertToInt(value));
+    setAmount(e.target.value);
   };
 
   const handleInstallmentsChange = (e) => {
-    const value = trimValue(e.target.value);
-    setInstallments(convertToInt(value));
+    setInstallments(e.target.value);
   };
 
   const handleMdrChange = (e) => {
-    const value = trimValue(e.target.value);
-    setMdr(convertToInt(value));
+    setMdr(e.target.value);
   };
 
-  const validate = (field: string): void => {
-    const formData = { amount, installments, mdr };
+  const validate = useCallback(
+    (field: string): void => {
+      const formData = { amount, installments, mdr };
 
-    setValidationError((old) => ({
-      ...old,
-      [`${field}Error`]: validation.validate(field, formData),
-    }));
+      setValidationError((old) => ({
+        ...old,
+        [`${field}Error`]: validation.validate(field, formData),
+      }));
 
-    setValidationError((old) => ({
-      ...old,
-      isFormInvalid:
-        !!old.amountError || !!old.installmentsError || !!old.mdrError,
-    }));
-  };
+      setValidationError((old) => ({
+        ...old,
+        isFormInvalid:
+          !!old.amountError || !!old.installmentsError || !!old.mdrError,
+      }));
+    },
+    [amount, installments, mdr, validation],
+  );
 
-  useEffect(() => validate('amount'), [amount]);
-  useEffect(() => validate('installments'), [installments]);
-  useEffect(() => validate('mdr'), [mdr]);
+  useEffect(() => validate('amount'), [amount, validate]);
+  useEffect(() => validate('installments'), [installments, validate]);
+  useEffect(() => validate('mdr'), [mdr, validate]);
 
   const calculateAntecipation = useCallback(async () => {
     const dto = await defaultAntecipation.post(amount, installments, mdr);
@@ -85,7 +75,8 @@ const DefaultAntecipation = ({
   }, [amount, installments, mdr]);
 
   useEffect(() => {
-    if (validationError === null || validationError.isFormInvalid) return;
+    if (validationError === null) return;
+    if (validationError.isFormInvalid) return;
 
     globalContext.setValue({ loading: true });
 
@@ -93,6 +84,8 @@ const DefaultAntecipation = ({
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [amount, calculateAntecipation, installments, mdr]);
+
+  console.log(validationError);
 
   return (
     <section className="container">
