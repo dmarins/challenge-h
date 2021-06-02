@@ -1,6 +1,6 @@
 class GreaterThanFieldError extends Error {
   constructor(limit: number) {
-    super(`O valor mínimo é ${limit}`);
+    super(`O valor não pode ser menor que ${limit}`);
     this.name = 'GreaterThanFieldError';
   }
 }

@@ -29,8 +29,11 @@ const DefaultAntecipation = ({
     validationErrorDefaultValues,
   );
   const [amount, setAmount] = useState('');
+  const [amountTimer, setAmountTimer] = useState(null);
   const [installments, setInstallments] = useState('');
+  const [installmentsTimer, setInstallmentsTimer] = useState(null);
   const [mdr, setMdr] = useState('');
+  const [mdrTimer, setMdrTimer] = useState(null);
   const { t } = useTranslation();
   const globalContext = useContext(GlobalContext);
 
@@ -54,15 +57,42 @@ const DefaultAntecipation = ({
   useEffect(() => validate('mdr'), [mdr]);
 
   const handleAmountChange = (e) => {
-    setAmount(e.target.value);
+    if (amountTimer) {
+      clearTimeout(amountTimer);
+      setAmountTimer(null);
+    }
+
+    setAmountTimer(
+      setTimeout(() => {
+        setAmount(e.target.value);
+      }, 300),
+    );
   };
 
   const handleInstallmentsChange = (e) => {
-    setInstallments(e.target.value);
+    if (installmentsTimer) {
+      clearTimeout(installmentsTimer);
+      setInstallmentsTimer(null);
+    }
+
+    setInstallmentsTimer(
+      setTimeout(() => {
+        setInstallments(e.target.value);
+      }, 300),
+    );
   };
 
   const handleMdrChange = (e) => {
-    setMdr(e.target.value);
+    if (mdrTimer) {
+      clearTimeout(mdrTimer);
+      setMdrTimer(null);
+    }
+
+    setMdrTimer(
+      setTimeout(() => {
+        setMdr(e.target.value);
+      }, 300),
+    );
   };
 
   const calculate = async () => {
@@ -79,17 +109,19 @@ const DefaultAntecipation = ({
     }
 
     globalContext.setValue({ loading: false, resume: dto.data });
+    setValidationError(validationErrorDefaultValues);
   };
 
   useEffect(() => {
+    if (amount === '') return;
+    if (installments === '') return;
+    if (mdr === '') return;
     if (validationError.isFormInvalid) return;
 
     globalContext.setValue({ loading: true });
 
     calculate();
-  }, [validationError.isFormInvalid]);
-
-  console.log(validationError);
+  }, [validationError.isFormInvalid, amount, installments, mdr]);
 
   return (
     <section className="container">
