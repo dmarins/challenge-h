@@ -1,7 +1,7 @@
 import IDefaultAntecipation from 'domain/usecases/default-antecipation/defaultAntecipation';
 import { ReturnType } from 'domain/dto/commandResultDto';
 
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Loading } from 'presentation/components/Loading/Loading';
 import { Resume } from 'presentation/components/Resume/Resume';
 import GlobalContext from 'presentation/contexts/globalContext';
@@ -19,12 +19,39 @@ const DefaultAntecipation = ({
   defaultAntecipation,
   validation,
 }: Props): JSX.Element => {
-  const [amount, setAmount] = useState(null);
-  const [installments, setInstallments] = useState(null);
-  const [mdr, setMdr] = useState(null);
-  const [validationError, setValidationError] = useState(null);
+  const validationErrorDefaultValues = {
+    amountError: undefined,
+    installmentsError: undefined,
+    mdrError: undefined,
+    isFormInvalid: true,
+  };
+  const [validationError, setValidationError] = useState(
+    validationErrorDefaultValues,
+  );
+  const [amount, setAmount] = useState('');
+  const [installments, setInstallments] = useState('');
+  const [mdr, setMdr] = useState('');
   const { t } = useTranslation();
   const globalContext = useContext(GlobalContext);
+
+  const validate = (field: string): void => {
+    const formData = { amount, installments, mdr };
+
+    setValidationError((old) => ({
+      ...old,
+      [`${field}Error`]: validation.validate(field, formData),
+    }));
+
+    setValidationError((old) => ({
+      ...old,
+      isFormInvalid:
+        !!old.amountError || !!old.installmentsError || !!old.mdrError,
+    }));
+  };
+
+  useEffect(() => validate('amount'), [amount]);
+  useEffect(() => validate('installments'), [installments]);
+  useEffect(() => validate('mdr'), [mdr]);
 
   const handleAmountChange = (e) => {
     setAmount(e.target.value);
@@ -38,30 +65,12 @@ const DefaultAntecipation = ({
     setMdr(e.target.value);
   };
 
-  const validate = useCallback(
-    (field: string): void => {
-      const formData = { amount, installments, mdr };
-
-      setValidationError((old) => ({
-        ...old,
-        [`${field}Error`]: validation.validate(field, formData),
-      }));
-
-      setValidationError((old) => ({
-        ...old,
-        isFormInvalid:
-          !!old.amountError || !!old.installmentsError || !!old.mdrError,
-      }));
-    },
-    [amount, installments, mdr, validation],
-  );
-
-  useEffect(() => validate('amount'), [amount, validate]);
-  useEffect(() => validate('installments'), [installments, validate]);
-  useEffect(() => validate('mdr'), [mdr, validate]);
-
-  const calculateAntecipation = useCallback(async () => {
-    const dto = await defaultAntecipation.post(amount, installments, mdr);
+  const calculate = async () => {
+    const dto = await defaultAntecipation.post(
+      parseInt(amount.trim()),
+      parseInt(installments.trim()),
+      parseInt(mdr.trim()),
+    );
 
     if (dto.returnType !== ReturnType.ok) {
       Notification.showError(dto.message);
@@ -70,20 +79,15 @@ const DefaultAntecipation = ({
     }
 
     globalContext.setValue({ loading: false, resume: dto.data });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amount, installments, mdr]);
+  };
 
   useEffect(() => {
-    if (validationError === null) return;
     if (validationError.isFormInvalid) return;
 
     globalContext.setValue({ loading: true });
 
-    calculateAntecipation();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amount, calculateAntecipation, installments, mdr]);
+    calculate();
+  }, [validationError.isFormInvalid]);
 
   console.log(validationError);
 
@@ -92,44 +96,34 @@ const DefaultAntecipation = ({
       <div className="inputs">
         <h1 className="title">{t('inputs.title')}</h1>
         <div className="form">
-          <div
-            className={`field ${
-              validationError && validationError.amountError && 'error'
-            }`}
-          >
+          <div className={`field ${validationError.amountError && 'error'}`}>
             <label>{t('inputs.labels.sale')}</label>
             <input
               type="text"
               name="amount"
               onChange={handleAmountChange}
-              placeholder={validationError && validationError.amountError}
+              title={validationError.amountError}
             />
           </div>
           <div
-            className={`field ${
-              validationError && validationError.installmentsError && 'error'
-            }`}
+            className={`field ${validationError.installmentsError && 'error'}`}
           >
             <label>{t('inputs.labels.installments')}</label>
             <input
               type="text"
               name="installments"
               onChange={handleInstallmentsChange}
-              placeholder={validationError && validationError.installmentsError}
+              title={validationError.installmentsError}
             />
             <small>{t('inputs.labels.disclaimer')}</small>
           </div>
-          <div
-            className={`field ${
-              validationError && validationError.installmentsError && 'error'
-            }`}
-          >
+          <div className={`field ${validationError.mdrError && 'error'}`}>
             <label>{t('inputs.labels.mdr')}</label>
             <input
               type="text"
               name="mdr"
               onChange={handleMdrChange}
-              placeholder={validationError && validationError.mdrError}
+              title={validationError.mdrError}
             />
           </div>
         </div>

@@ -17,7 +17,6 @@ export class ValidationComposite implements IValidation {
 
     for (const validator of validators) {
       const error = validator.validate(input);
-
       if (error) return error.message;
     }
   }

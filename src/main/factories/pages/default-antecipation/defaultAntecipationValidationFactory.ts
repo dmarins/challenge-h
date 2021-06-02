@@ -3,7 +3,7 @@ import { ValidationComposite as Composite } from 'validation/composite/validatio
 
 const makeDefaultAntecipationValidation = (): Composite =>
   Composite.build([
-    ...Builder.field('amount').required().greaterThan(999).build(),
+    ...Builder.field('amount').required().greaterThan(1000).build(),
     ...Builder.field('installments').required().build(),
     ...Builder.field('mdr').required().build(),
   ]);

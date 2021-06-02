@@ -2,10 +2,10 @@
   "inputs": {
     "title": "Simule sua Antecipação",
     "labels": {
-      "sale": "Informe o valor da venda",
-      "installments": "Em quantas parcelas?",
+      "sale": "Informe o valor da venda *",
+      "installments": "Em quantas parcelas *",
       "disclaimer": "Máximo de 12 parcelas",
-      "mdr": "Informe o percentual de MDR"
+      "mdr": "Informe o percentual de MDR *"
     }
   },
   "resume": {

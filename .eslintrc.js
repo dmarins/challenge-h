@@ -11,5 +11,6 @@ module.exports = {
       },
     ],
     'object-curly-spacing': ['error', 'always'],
+    'react-hooks/exhaustive-deps': ['off'],
   },
 };

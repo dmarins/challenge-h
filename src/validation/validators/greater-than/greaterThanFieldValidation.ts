@@ -11,7 +11,7 @@ class GreaterThanFieldValidation implements IFieldValidation {
   }
 
   validate(input: object): Error {
-    return input[this.field] > this.limit
+    return input[this.field] > this.limit - 1
       ? null
       : new GreaterThanFieldError(this.limit);
   }

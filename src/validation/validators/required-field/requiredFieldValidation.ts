@@ -9,7 +9,9 @@ class RequiredFieldValidation implements IFieldValidation {
   }
 
   validate(input: object): Error {
-    return input[this.field]?.length > 0 ? null : new RequiredFieldError();
+    const result =
+      input[this.field]?.length > 0 ? null : new RequiredFieldError();
+    return result;
   }
 }
 
