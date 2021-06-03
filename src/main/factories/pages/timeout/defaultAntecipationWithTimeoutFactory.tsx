@@ -2,13 +2,13 @@ import DefaultAntecipation from 'presentation/pages/DefaultAntecipation/DefaultA
 import makeRemoteDefaultAntecipation from 'main/factories/usecases/default-antecipation/remoteDefaultAntecipationFactory';
 import makeDefaultAntecipationValidation from 'main/factories/pages/default-antecipation/defaultAntecipationValidationFactory';
 
-const makeDefaultAntecipation: React.FC = () => {
+const makeDefaultAntecipationWithTimeout: React.FC = () => {
   return (
     <DefaultAntecipation
-      defaultAntecipation={makeRemoteDefaultAntecipation('default')}
+      defaultAntecipation={makeRemoteDefaultAntecipation('timeout')}
       validation={makeDefaultAntecipationValidation()}
     />
   );
 };
 
-export default makeDefaultAntecipation;
+export default makeDefaultAntecipationWithTimeout;

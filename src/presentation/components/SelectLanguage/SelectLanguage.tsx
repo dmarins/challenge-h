@@ -3,7 +3,7 @@ import './SelectLanguage.css';
 
 const SelectLanguage = (): JSX.Element => {
   return (
-    <>
+    <div>
       <button
         className="button pt"
         type="submit"
@@ -18,7 +18,7 @@ const SelectLanguage = (): JSX.Element => {
           i18n.changeLanguage('en');
         }}
       ></button>
-    </>
+    </div>
   );
 };
 

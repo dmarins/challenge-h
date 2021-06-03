@@ -5,9 +5,9 @@ import { makeBaseUrl } from 'main/factories/http/httpBaseUrlFactory';
 import makeCommandResult from 'main/factories/dto/commandResultFactory';
 import RemoteDefaultAntecipation from 'data/usecases/default-antecipation/remoteDefaultAntecipation';
 
-const makeRemoteDefaultAntecipation = (): IDefaultAntecipation =>
+const makeRemoteDefaultAntecipation = (type: string): IDefaultAntecipation =>
   new RemoteDefaultAntecipation(
-    makeBaseUrl(),
+    makeBaseUrl(type),
     makeAxiosHttpPostClient(),
     makeCommandResult(),
   );

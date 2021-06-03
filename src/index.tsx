@@ -15,13 +15,31 @@ ReactDOM.render(
     <I18nextProvider i18n={i18n}>
       <StoreProvider>
         <header>
+          <div>
+            <span>v{process.env.REACT_APP_VERSION}</span>
+          </div>
           <SelectLanguage />
         </header>
         <main>
           <Router />
           <ToastContainer />
         </main>
-        <footer>{process.env.REACT_APP_VERSION}</footer>
+        <nav>
+          <ul>
+            <li>
+              <a href="/">Antecipação padrão</a>
+            </li>
+            <li>
+              <a href="/delay">Antecipação padrão com delay</a>
+            </li>
+            <li>
+              <a href="/timeout">Antecipação padrão com timeout</a>
+            </li>
+            <li>
+              <a href="/error">Antecipação padrão com erro 500</a>
+            </li>
+          </ul>
+        </nav>
       </StoreProvider>
     </I18nextProvider>
   </React.StrictMode>,
