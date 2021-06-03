@@ -22,7 +22,7 @@ ReactDOM.render(
         </header>
         <main>
           <Router />
-          <ToastContainer />
+          <ToastContainer data-test-id="notification" />
         </main>
         <nav>
           <ul>
