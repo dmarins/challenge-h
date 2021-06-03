@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+# Instruções para a execução do projeto
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 1 - instalar dependências
 
-## Available Scripts
+```
+npm install ou yarn add ou yarn
+```
 
-In the project directory, you can run:
+## 2 - construir e servir os arquivos para o desenvolvimento
 
-### `yarn start`
+```
+npm run start ou yarn start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 2.1 - gerar um padrão de arquivos para a criação de novos componentes ou páginas
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+npm run generate ou yarn generate
+```
 
-### `yarn test`
+## 2.2 - lintar toda a base de código
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm run lint ou yarn lint
+```
 
-### `yarn build`
+## 3 - executar todos os testes de unidade para o desenvolvimento
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm run test:unit ou yarn test:unit
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 3.1 - executar todos os testes de unidade com code coverage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm run test:ci ou yarn test:ci
+```
 
-### `yarn eject`
+## 3.2 - executar todos os testes de end to end (sem interface)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+npm run start ou yarn start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+em um terminal a parte:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+npm run test:e2e ou yarn test:e2e
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 3.3 - executar todos os testes de end to end (com interface)
 
-## Learn More
+```
+npm run start ou yarn start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+em um terminal a parte:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm run cy:open ou yarn cy:open
+```
+
+## 4 - construir os arquivos finais para produção
+
+```
+npm run build ou yarn build
+```
