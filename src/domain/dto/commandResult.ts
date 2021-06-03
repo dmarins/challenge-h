@@ -11,8 +11,8 @@ class CommandResult implements IResult {
         return new CommandResultDto().ok(contract.body);
       case HttpStatusCode.badRequest:
         return new CommandResultDto().badRequest();
-      case HttpStatusCode.serverError:
-        return new CommandResultDto().serverError();
+      case HttpStatusCode.internalServerError:
+        return new CommandResultDto().internalServerError();
       case HttpStatusCode.timeOut:
         return new CommandResultDto().timeOut();
     }

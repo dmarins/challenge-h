@@ -1,9 +1,9 @@
 export enum ReturnType {
   unknow = 999,
   ok = 200,
-  timeOut = 204,
+  timeOut = 408,
   badRequest = 400,
-  serverError = 500,
+  internalServerError = 500,
 }
 
 export class CommandResultDto {
@@ -25,8 +25,8 @@ export class CommandResultDto {
     return this;
   }
 
-  serverError() {
-    this.returnType = ReturnType.serverError;
+  internalServerError() {
+    this.returnType = ReturnType.internalServerError;
     this.message =
       'Houve um erro ao processar a requisição. Tente novamente mais tarde.';
 

@@ -1,16 +1,16 @@
 {
   "inputs": {
     "title": "Simulate Your Anticipation",
-    "labels":{
+    "labels": {
       "sale": "Enter the sale amount *",
       "installments": "In how many installments *",
       "disclaimer": "Maximum of 12 installments",
       "mdr": "Enter the MDR percentage *"
     }
   },
-  "resume":{
+  "resume": {
     "title": "YOU WILL RECEIVE:",
-    "items":{
+    "items": {
       "tomorrow": "Tomorrow",
       "inXdays": "In {{days}} days"
     }

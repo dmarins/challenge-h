@@ -48,6 +48,7 @@ yarn-error.log*
 .history
 .ionide
 
+### Cypress ###
 cypress/*
 !cypress/integration
 !cypress/support
