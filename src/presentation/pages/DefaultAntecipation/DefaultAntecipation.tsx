@@ -134,6 +134,7 @@ const DefaultAntecipation = ({
               type="text"
               name="amount"
               onChange={handleAmountChange}
+              data-test-id="amount"
               title={validationError.amountError}
             />
           </div>
@@ -145,6 +146,7 @@ const DefaultAntecipation = ({
               type="text"
               name="installments"
               onChange={handleInstallmentsChange}
+              data-test-id="installments"
               title={validationError.installmentsError}
             />
             <small>{t('inputs.labels.disclaimer')}</small>
@@ -155,6 +157,7 @@ const DefaultAntecipation = ({
               type="text"
               name="mdr"
               onChange={handleMdrChange}
+              data-test-id="mdr"
               title={validationError.mdrError}
             />
           </div>

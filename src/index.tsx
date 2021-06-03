@@ -27,16 +27,24 @@ ReactDOM.render(
         <nav>
           <ul>
             <li>
-              <a href="/">Antecipação padrão</a>
+              <a href="/" data-test-id="default-antecipation">
+                Antecipação padrão
+              </a>
             </li>
             <li>
-              <a href="/delay">Antecipação padrão com delay</a>
+              <a href="/delay" data-test-id="default-antecipation-delay">
+                Antecipação padrão com delay
+              </a>
             </li>
             <li>
-              <a href="/timeout">Antecipação padrão com timeout</a>
+              <a href="/timeout" data-test-id="default-antecipation-timeout">
+                Antecipação padrão com timeout
+              </a>
             </li>
             <li>
-              <a href="/error">Antecipação padrão com erro 500</a>
+              <a href="/error" data-test-id="default-antecipation-error">
+                Antecipação padrão com erro 500
+              </a>
             </li>
           </ul>
         </nav>

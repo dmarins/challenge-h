@@ -26,13 +26,13 @@ const Resume = (): JSX.Element => {
     for (let [key, value] of properties) {
       items.push(
         <li key={key}>
-          <label>
+          <label data-test-id={`key-${key}`}>
             {key === '1'
               ? t('resume.items.tomorrow')
               : t('resume.items.inXdays', { days: key })}
             :
           </label>
-          <span>{formatMoney(value)}</span>
+          <span data-test-id={`value-${key}`}>{formatMoney(value)}</span>
         </li>,
       );
     }
