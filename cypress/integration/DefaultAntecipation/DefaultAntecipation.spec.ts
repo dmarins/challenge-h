@@ -5,7 +5,7 @@ describe('DefaultAntecipation', () => {
     cy.visit('/');
   });
 
-  it('deve calcular a antecipação padrão conforme o esperado', () => {
+  it('should calculate the default anticipation as expected', () => {
     cy.get('[data-test-id="amount"]').type('1000').should('have.value', '1000');
     cy.get('[data-test-id="installments"]').type('1').should('have.value', '1');
     cy.get('[data-test-id="mdr"]').type('1').should('have.value', '1');
@@ -18,7 +18,7 @@ describe('DefaultAntecipation', () => {
     cy.get('[data-test-id="value-90"]').contains('990,00');
   });
 
-  it('deve estimular a validação de obrigatoridade do campo amount', () => {
+  it('should validate the mandatory amount field', () => {
     cy.get('[data-test-id="amount"]').then((elem) => {
       let title = elem.attr('title');
       cy.wrap(title).should('eq', 'Campo obrigatório');
@@ -33,7 +33,7 @@ describe('DefaultAntecipation', () => {
       });
   });
 
-  it('deve estimular a validação de formato do campo amount', () => {
+  it('should validate the format of field amount', () => {
     cy.get('[data-test-id="amount"]')
       .type('aaa')
       .wait(300)
@@ -43,7 +43,7 @@ describe('DefaultAntecipation', () => {
       });
   });
 
-  it('deve estimular a validação de limite do campo amount', () => {
+  it('should validate the limit of the amount field', () => {
     cy.get('[data-test-id="amount"]')
       .type('100')
       .wait(300)
@@ -53,7 +53,7 @@ describe('DefaultAntecipation', () => {
       });
   });
 
-  it('deve estimular a validação de obrigatoridade do campo installments', () => {
+  it('should validate the obligation of the installments field', () => {
     cy.get('[data-test-id="installments"]').then((elem) => {
       let title = elem.attr('title');
       cy.wrap(title).should('eq', 'Campo obrigatório');
@@ -68,7 +68,7 @@ describe('DefaultAntecipation', () => {
       });
   });
 
-  it('deve estimular a validação de formato do campo installments', () => {
+  it('should validate the format of field installments', () => {
     cy.get('[data-test-id="installments"]')
       .type('aaa')
       .wait(300)
@@ -78,7 +78,7 @@ describe('DefaultAntecipation', () => {
       });
   });
 
-  it('deve estimular a validação de limite do campo installments', () => {
+  it('should validate the limit of the installments field', () => {
     cy.get('[data-test-id="installments"]')
       .type('15')
       .wait(300)
@@ -88,7 +88,7 @@ describe('DefaultAntecipation', () => {
       });
   });
 
-  it('deve estimular a validação de obrigatoridade do campo mdr', () => {
+  it('should validate the obligation of the mdr field', () => {
     cy.get('[data-test-id="mdr"]').then((elem) => {
       let title = elem.attr('title');
       cy.wrap(title).should('eq', 'Campo obrigatório');
@@ -103,7 +103,7 @@ describe('DefaultAntecipation', () => {
       });
   });
 
-  it('deve estimular a validação de formato do campo mdr', () => {
+  it('should validate the format of field mdr', () => {
     cy.get('[data-test-id="mdr"]')
       .type('aaa')
       .wait(300)
@@ -113,7 +113,7 @@ describe('DefaultAntecipation', () => {
       });
   });
 
-  it('deve estimular a validação de limite do campo mdr', () => {
+  it('should validate the limit of the installments field', () => {
     cy.get('[data-test-id="mdr"]')
       .type('0')
       .wait(300)
