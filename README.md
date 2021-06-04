@@ -1,4 +1,26 @@
-# Instruções para a execução do projeto
+## Challenge H
+
+Um frontend que simula os valores envolvidos em uma antecipação de recebíveis.
+
+## Principais pontos
+
+- react
+- react context api
+- react hooks
+- typescript
+- clean architecture
+- princípios SOLID, SOC, DRY, KISS, composição sobre herança
+- injeção de dependência
+- componentes funcionais
+- programação orientada a objetos
+- programação reativa
+- design patterns
+- react-i18next
+- jest / cypress
+- eslint + prettier
+- husky + lintstaged
+- plop
+
 
 ## 1 - instalar dependências
 
